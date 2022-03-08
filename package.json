@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/rgoodman394/low-web-orders#readme",
   "dependencies": {
+    "chart.js": "^3.7.1",
     "express": "^4.17.3",
     "nodemon": "^2.0.15"
   }
