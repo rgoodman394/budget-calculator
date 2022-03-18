@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget Calculator</title>
+    <link rel="stylesheet" href="styles.css">
 
 </head>
 
@@ -22,7 +23,9 @@
                     <div class="income">
                         <div class="income-title">Income</div><div class="income-total"> </div>
                     </div>
-                    <div class="chart"></div>
+                    <div>
+                        <canvas id="myChart"></canvas>
+                    </div>
                     <div class="outcome">
                         <div class="outcome-title">Outcome</div><div class="outcome-total"> </div>
                     </div>
@@ -42,7 +45,7 @@
         <div class="hide" id="expense"></div>
         <ul class="list">
             <li id="0" class="expense">
-                <div class="entry">Salary: $8000</div>
+                <div class="entry">Salary</div>
                 <div id="edit"></div>
                 <div id="delete"></div>
             </li>
@@ -72,4 +75,8 @@
     </div> <!-- end dashboard div-->
     
 </body>
+
+<script src="app.js"></script>
+<script src="index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </html>

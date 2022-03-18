@@ -23,6 +23,9 @@ const addExpense = document.querySelector(".add-expense")
 const expenseTitle = document.getElementById("expense-title-input")
 const expenseAmount = document.getElementById("expense-amount-input")
 
+let balance = 0, income = 0, outcome = 0
+const DELETE = "delete", EDIT = "edit" 
+
 
 // SHOW/HIDE FUNCTIONS FOR DASHBOARD UI
 
@@ -55,14 +58,14 @@ function show(element){
     element.classlist.remove("hide")
 }
 
-function hide(elementsArray){
-    elementsArray.forEach(element => {
+function hide(elements){
+    elements.forEach(element => {
         element.classlist.add("hide")
     });
 }
 
-function inactive(elementsArray){
-    elementsArray.forEach(element => {
+function inactive(elements){
+    elements.forEach(element => {
         element.classlist.remove("active")
     });
 }
@@ -83,12 +86,11 @@ addIncome.addEventListener("click", function(){
     ENTRY_LIST.push(income)
 
     updateUI()
-
-    clearInput([incomeTitle, incomeAmount])
+    clearInput([incomeTitle.value, incomeAmount.value])
 })
 
 addExpense.addEventListener("click", function(){
-    if(!expenseTitle.value || expenseAmount.value) return;
+    if(!expenseTitle.value || !expenseAmount.value) return;
     let expense = {
         type: "expense",
         title: expenseTitle.value,
@@ -97,7 +99,7 @@ addExpense.addEventListener("click", function(){
     ENTRY_LIST.push(expense);
 
     updateUI()
-    clearInput([expenseTitle, expenseAmount])
+    clearInput([expenseTitle.value, expenseAmount.value])
 })
 
 
@@ -107,7 +109,7 @@ function calculateTotal (type, ENTRY_LIST){
     let sum = 0;
     ENTRY_LIST.forEach(entry => {
         if(entry.type == type) {
-            sum += entry.amount
+            sum += entry.amount;
         }
     });
     return sum;
@@ -137,20 +139,22 @@ function showEntry(list, type, title, amount, id){
 }
 
 
-// UPDATE TOTALS
+// UPDATE TOTALS & CHART FUNCTIONS
 
 function updateUI(){
     income = calculateTotal("income", ENTRY_LIST)
     outcome = calculateTotal("expense" , ENTRY_LIST)
-    balance = calculateBalance(income, outcome)
+    balance = math.abs(calculateBalance(income, outcome))
 
-    balanceEl.innerHTML = `<small>$</small>${balance}`
-    incomeTotalEl.innerHTML = `<small>$</small>${income}`
-    outcomeTotalEl.innerHTML = `<small>$</small>${outcome}`
+    let sign = (income >= outcome) ? "$" : "-$"
+
+    balanceEl.innerHTML = `<small>${sign}</small>${balance}`
+    incomeTotalEl.innerHTML = `<small>${sign}</small>${income}`
+    outcomeTotalEl.innerHTML = `<small>${sign}</small>${outcome}`
 
     clearElement([incomeList, expenseList, allList]);
 
-    ENTRY_LIST.forEach( entry => {
+    ENTRY_LIST.forEach( entry , index => {
         if(entry.type == "income"){
             showEntry(incomeList, entry.type, entry.title, entry.amount, index)
         } else if(entry.type == "expense"){
@@ -159,7 +163,56 @@ function updateUI(){
         showEntry(allList, entry.type, entry.title, entry.amount, index)
     });
 
-
-
-
+    updateChart(income, outcome)
 }
+
+function clearInput (inputs){
+    inputs.forEach(input => {
+        input.value = ""; 
+    })
+}
+
+function clearElement(elements){
+     elements.forEach(element => {
+         element.innerHTML = "";
+     })
+}
+
+updateChart //need to insert chart.js functions here
+
+
+function deleteEntry (ENTRY){
+    ENTRY_LIST.splice(ENTRY.id , 1) 
+    updateUI()
+}
+
+function editEntry (ENTRY) {
+    let entry = ENTRY_LIST[ENTRY.id]
+    
+    if (entry.type == "income") {
+        incomeAmount.value = entry.amount;
+        incomeTitle.value = entry.title; 
+    } else if (entry.type =="expense"){
+        expenseAmount.value = entry.amount;
+        expenseTitle.value = entry.title;  
+    }
+    deleteEntry(ENTRY)
+}
+
+incomeList.addEventListener("click", deleteOrEdit)
+expenseList.addEventListener("click", deleteOrEdit)
+allList.addEventListener("click", deleteOrEdit)
+
+function deleteOrEdit(event){
+    const targetBtn = event.target
+    const ENTRY = targetBtn.parentNode
+
+    if (targetBtn.id == "delete") {
+        deleteEntry(ENTRY);
+    } else if (targetBtn.id == "edit"){
+        editEntry(ENTRY);
+    }
+}
+
+// SAVE DATA IN LOCAL STORAGE
+
