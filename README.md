@@ -1,4 +1,4 @@
-# LOW Web Order Data
+# Budget Calculator App
 ## *Rebekah Goodman | 03/22*
 
 
@@ -11,7 +11,7 @@ Here are the elements I picked to build my site:
 3. Visualize data in a graph, chart, or other visual representation of data --> Create a pie chart that shows the balance of the income - outcome.
 
 
-Thanks again for visiting my site!
+Thanks again for checking out my project!
 
 *Special Thanks To:*
 
