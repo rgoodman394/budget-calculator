@@ -1,82 +1,77 @@
+<!-- www.youtube.com/CodeExplained -->
 <!DOCTYPE html>
 <html lang="en">
-
-<!---------HEAD--------->
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budget Calculator</title>
+    <title>Budget App - JavaScript</title>
     <link rel="stylesheet" href="styles.css">
-
 </head>
-
 <body>
-    <div class="background">
+    <div class="budget-container">
         <div class="app-title">
-            <div class="budget-header">
-                <div class="balance">
-                    <div class="balance-title">Balance</div><div class="balance-value"> </div>
+            <a href="">Code<b>Explained</b></a>
+        </div>
+        <div class="budget-header">
+            <div class="balance">
+                <div class="title">
+                    Balance
                 </div>
-                <div class="account">
-                    <div class="income">
-                        <div class="income-title">Income</div><div class="income-total"> </div>
+                <div class="value">
+                    <small>$</small>0
+                </div>
+            </div>
+            <div class="account">
+                <div class="income">
+                    <div class="title">
+                        Income
                     </div>
-                    <div>
-                        <canvas id="myChart"></canvas>
+                    <div class="income-total">
+                        <small>$</small>0
                     </div>
-                    <div class="outcome">
-                        <div class="outcome-title">Outcome</div><div class="outcome-total"> </div>
+                </div>
+                <div class="chart"></div>
+                <div class="outcome">
+                    <div class="title">
+                        Outcome
+                    </div>
+                    <div class="outcome-total">
+                        <small>$</small>0
                     </div>
                 </div>
             </div>
         </div>
-    </div> <!-- end background div-->
-
-    <div class="budget-dashboard">
-        <div class="dash-title">Dashboard</div>
-        <div class="toggle">
-            <div class="tab1">Expenses</div>
-            <div class="tab2 active">Income</div>
-            <div class="tab3">All</div>
-        </div>
-
-        <div class="hide" id="expense"></div>
-        <ul class="list">
-            <li id="0" class="expense">
-                <div class="entry">Salary</div>
-                <div id="edit"></div>
-                <div id="delete"></div>
-            </li>
-        </ul>
-        <div class="input">
-            <input type="text" name="title" id="expense-title-input" placeholder="Title">
-            <input type="number" name="amount" id="expense-amount-input" placeholder="$0">
-            <div class="add-outcome"><img src="plusbutton"></div>
-        </div>
-        
-
-        <div id="income">
-            <ul class="list">
-                <li id="0" class="income">
-                    <div class="entry">Salary: $8000</div>
-                    <div id="edit"></div>
-                    <div id="delete"></div>
-                </li>
-            </ul>
-            <div class="input">
-                <input type="text" name="title" id="income-title-input" placeholder="Title">
-                <input type="number" name="amount" id="income-amount-input" placeholder="$0">
-                <div class="add-income"><img src="plusbutton"></div>
+        <div class="budget-dashboard">
+            <div class="dash-title">Dashboard</div>
+            <div class="toggle">
+                <div class="tab1 active">Expenses</div>
+                <div class="tab2">Income</div>
+                <div class="tab3">All</div>
             </div>
-        </div> <!-- end income tab div-->
-        <div class="hide" id="all"></div>
-    </div> <!-- end dashboard div-->
-    
+            
+            <div class="hide" id="income">
+                <ul class="list"></ul>
+                <div class="input">
+                    <input type="text" id="income-title-input" name="title" placeholder="Title">
+                    <input type="number" id="income-amount-input" name="amount" placeholder="$0">
+                    <div class="add-income"><img src="images/add.png" alt=""></div>
+                </div>
+            </div>
+            <div id="expense">
+                <ul class="list"></ul>
+                <div class="input">
+                    <input type="text" id="expense-title-input" name="title" placeholder="Title">
+                    <input type="number" id="expense-amount-input" name="amount" placeholder="$0">
+                    <div class="add-expense"><img src="images/add.png" alt=""></div>
+                </div>
+            </div>
+            <div class = "hide" id="all">
+                <ul class="list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- <script src="chart.js"></script> -->
+    <script src="app.js"></script>
 </body>
-
-<script src="app.js"></script>
-<script src="index.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </html>
