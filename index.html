@@ -5,12 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget App - JavaScript</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Rubik:wght@600&display=swap"
+        rel="stylesheet">
 </head>
 <body>
     <div class="budget-container">
         <div class="app-title">
-            <a href="">Code<b>Explained</b></a>
+            <a href="">Budget<b>Calculator</b></a>
         </div>
         <div class="budget-header">
             <div class="balance">
@@ -21,6 +26,11 @@
                     <small>$</small>0
                 </div>
             </div>
+           
+            <div class="chartContainer">
+                <canvas id="myChart" width="150" height="150"></canvas>
+            </div>
+            
             <div class="account">
                 <div class="income">
                     <div class="title">
@@ -30,7 +40,7 @@
                         <small>$</small>0
                     </div>
                 </div>
-                <div class="chart"></div>
+
                 <div class="outcome">
                     <div class="title">
                         Outcome

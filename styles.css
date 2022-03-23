@@ -1,23 +1,11 @@
-@font-face {
-     font-family: 'Gilroy';
-     src: url('font/Gilroy-Regular.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Gilroy Bold';
-    src: url('font/Gilroy-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-}  
 
 body{
     background-color: #222;
-     font-family: 'Gilroy'; 
+    font-family: 'Montserrat', sans-serif; /*regular*/
 }
 
 *{
-     font-family: 'Gilroy'; 
+    font-family: 'Rubik', sans-serif; /*bold*/
     list-style: none;
     text-decoration: none;
     -webkit-user-select: none;      
@@ -57,7 +45,7 @@ input[type=number] {
     color: #FFF;
 }
 .budget-container .app-title a b{
-    font-family: 'Gilroy Bold';
+    font-family: 'Rubik', sans-serif;
 }
 
 
@@ -69,14 +57,14 @@ input[type=number] {
 .budget-header .balance .title{
     color: #FFF;
     font-size: 1em;
-    font-family: 'Gilroy Bold';
+    font-family: 'Rubik', sans-serif;
 }
 
 .budget-header .balance .value{
     color: #FFF;
     font-size: 2em;
     margin-top: 10px;
-    font-family: 'Gilroy Bold';
+    font-family: 'Rubik', sans-serif;
 }
 
 .budget-header .account{
@@ -101,7 +89,7 @@ input[type=number] {
 }
 .budget-header .account .income .income-total{
     color: #FFF;
-    font-family: 'Gilroy Bold';
+    font-family: 'Rubik', sans-serif;
 }
 
 .budget-header .account .outcome .title{
@@ -110,7 +98,7 @@ input[type=number] {
 }
 .budget-header .account .outcome .outcome-total{
     color: #f0624d;
-    font-family: 'Gilroy Bold';
+    font-family: 'Rubik', sans-serif;
 }
 
 /* /////////////   DASHBOARD    ///////////// */
@@ -129,7 +117,7 @@ input[type=number] {
     font-size: 1.7em;
     margin-left: 20px;
     margin-top: 30px;
-    font-family: 'Gilroy Bold';
+    font-family: 'Rubik', sans-serif;
 }
 
 .toggle{
@@ -143,7 +131,7 @@ input[type=number] {
     cursor: pointer;
     font-size: 1.1em;
     color: #1a0034;
-    font-family: 'Gilroy Bold';
+    font-family: 'Rubik', sans-serif;
     opacity: 0.4;
 }
 
@@ -200,7 +188,7 @@ input[type=number] {
     padding-left: 20px;
     margin-bottom: 10px;;
     word-wrap: break-word;
-    font-family: 'Gilroy Bold';
+    font-family: 'Montserrat', sans-serif;
 }
 
 .budget-dashboard #all ul.list li #edit{
@@ -250,7 +238,7 @@ input[type=number] {
     width : 150px;
     padding-left: 10px;
     font-size: 1.2em;
-     font-family: 'Gilroy'; 
+    font-family: 'Montserrat', sans-serif; 
     margin: 5px;
     margin-left: 10px;
     border-radius: 10px 0 0 10px;
@@ -262,7 +250,7 @@ input[type=number] {
     width : 110px;
     padding-left: 10px;
     font-size: 1.2em;
-     font-family: 'Gilroy'; 
+    font-family: 'Montserrat', sans-serif; 
     margin: 5px;
     margin-left: -10px;
     border-radius: 0 10px 10px 0;
@@ -302,7 +290,7 @@ input[type=number] {
     padding-left: 20px;
     margin-bottom: 10px;;
     word-wrap: break-word;
-    font-family: 'Gilroy Bold';
+    font-family: 'Montserrat', sans-serif;
     color: #f0624d;
 }
 
@@ -353,7 +341,7 @@ input[type=number] {
     width : 150px;
     padding-left: 10px;
     font-size: 1.2em;
-     font-family: 'Gilroy'; 
+    font-family: 'Montserrat', sans-serif; 
     margin: 5px;
     margin-left: 10px;
     border-radius: 10px 0 0 10px;
@@ -365,7 +353,7 @@ input[type=number] {
     width : 110px;
     padding-left: 10px;
     font-size: 1.2em;
-     font-family: 'Gilroy'; 
+    font-family: 'Montserrat', sans-serif; 
     margin: 5px;
     margin-left: -10px;
     border-radius: 0 10px 10px 0;
@@ -405,7 +393,7 @@ input[type=number] {
     padding-left: 20px;
     margin-bottom: 10px;;
     word-wrap: break-word;
-    font-family: 'Gilroy Bold';
+    font-family: 'Montserrat', sans-serif;
 }
 
 .budget-dashboard #income ul.list li #edit{

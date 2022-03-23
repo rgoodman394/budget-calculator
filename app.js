@@ -25,12 +25,65 @@ const addExpense = document.querySelector(".add-expense")
 const expenseTitle = document.getElementById("expense-title-input")
 const expenseAmount = document.getElementById("expense-amount-input")
 
+// CHART FUNCTIONS
+Chart.defaults.font.family = 'Montserrat'
+const ctx = document.getElementById('myChart');
+const pieChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Income', 'Expenses'],
+        datasets: [{
+            label: 'Expenses',
+            data: [],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: { 
+        plugins: { 
+            legend: { 
+                display: false, 
+            },
+            tooltip: {
+                // bodyFont: {weight: 'bold'},
+                padding: 8,
+                size: 24,
+                cornerRadius: 5,
+                displayColors: false,
+            },
+            datalabels: {
+                display: false,
+            },
+        },
+    }
+    
+});
+
+console.log(ctx)
+
 let balance = 0, income = 0, outcome = 0
 let ENTRY_LIST
 const DELETE = "delete", EDIT = "edit" 
 
 ENTRY_LIST = JSON.parse(localStorage.getItem("entry_list")) || [];
 updateUI()
+
+console.log(ENTRY_LIST)
 
 
 // SHOW/HIDE FUNCTIONS FOR DASHBOARD UI
@@ -142,9 +195,9 @@ function updateUI(){
         } 
         showEntry(allList, entry.type, entry.title, entry.amount, index)
     });
-
-    // updateChart(income, outcome) // this will need to be edited to reflect in chart.js
-
+    console.log(ctx, pieChart.data.datasets[0])
+    pieChart.data.datasets[0].data = [balance, outcome] // Would update the first dataset's value of 'March' to be 50
+    pieChart.update(); 
     localStorage.setItem("entry_list", JSON.stringify(ENTRY_LIST))
 }
 
@@ -214,22 +267,3 @@ function inactive(elements){
     });
 }
 
-
-
-
-
-// CALCULATE TOTALS FUNCTIONS
-
-
-
-
-
-
-
-
-
-
-
-// //CHART FUNCTIONS 
-
-// updateChart //need to insert chart.js functions here
