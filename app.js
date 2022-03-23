@@ -64,8 +64,22 @@ const pieChart = new Chart(ctx, {
                 padding: 8,
                 size: 24,
                 cornerRadius: 5,
-                displayColors: false,
-            },
+                displayColors: false, },
+                callbacks: {
+                    label: function(context) {
+                        let label = context.dataset.label || '';
+
+                        if (label) {
+                            return label += ': $';
+                           }
+                    },
+                        // }
+                        // if (context.parsed.y !== null) {
+                        //     label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+                        // }
+                        // return label;},
+                },
+                
             datalabels: {
                 display: false,
             },
@@ -196,7 +210,7 @@ function updateUI(){
         showEntry(allList, entry.type, entry.title, entry.amount, index)
     });
     console.log(ctx, pieChart.data.datasets[0])
-    pieChart.data.datasets[0].data = [balance, outcome] // Would update the first dataset's value of 'March' to be 50
+    pieChart.data.datasets[0].data = [balance, outcome]
     pieChart.update(); 
     localStorage.setItem("entry_list", JSON.stringify(ENTRY_LIST))
 }
