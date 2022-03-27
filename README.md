@@ -16,5 +16,6 @@ Thanks again for checking out my project!
 *Special Thanks To:*
 
 - CodeExplained for the overall idea and direction
-- Jacob Reese for the all the coffee, late night phone calls, and sacrificial love
+- Jacob Reese for the all the coffee, long troubleshooting sessions, and sacrificial love
+- Tyler Akin for technical support
 - Billie Jean the hamster for emotional support
