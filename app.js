@@ -31,7 +31,7 @@ const ctx = document.getElementById('myChart');
 const pieChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-        labels: ['Income: $', 'Expenses'],
+        labels: ['Income', 'Expenses'],
         datasets: [{
             label: 'Expenses',
             data: [],
@@ -64,20 +64,8 @@ const pieChart = new Chart(ctx, {
                 padding: 8,
                 size: 24,
                 cornerRadius: 5,
-                displayColors: false, },
-                callbacks: {
-                    label: function(context) {
-                        let label = context.dataset.label || '';
-
-                        if (label) {
-                            return label += ': $';
-                           }
-                    },
-                        // }
-                        // if (context.parsed.y !== null) {
-                        //     label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
-                        // }
-                        // return label;},
+                displayColors: false,
+                
                 },
                 
             datalabels: {

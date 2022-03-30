@@ -12,6 +12,7 @@ html, body {
 body{
     background-color: #00376a;
     font-family: 'Montserrat', sans-serif; /*regular*/
+    
 }
 
 *{
@@ -43,7 +44,8 @@ input[type=number] {
     /* top: 50%;
     left: 50%; */
     /* transform: translateX(-50%) translateY(-50%);  */
-    background-color: #00376a;
+    /* background-color: #00376a; */
+    background: linear-gradient(1deg, #6077ad 0%, #182848 100%);
 }
 
 .budget-container .app-title{
@@ -180,9 +182,9 @@ input[type=number] {
     opacity : 1 !important;
 }
 
-.active:hover {
+/* .active:hover {
     
-}
+} */
 
 .hide{
     display: none;
@@ -215,12 +217,14 @@ input[type=number] {
 .budget-dashboard #all ul.list li{
     position: relative;
     font-size: 1em;
+    width: 100%;
 }
 
 .budget-dashboard #all ul.list li *{
     display: inline-block;
     height: auto;
     vertical-align: middle;
+    
 }
 
 .budget-dashboard #all ul.list li .entry{
@@ -266,10 +270,10 @@ input[type=number] {
 }
 
 
-/* .budget-dashboard #all ul.list li.income{
-    
+.budget-dashboard #all ul.list li{
+    width: 360px;;
 
-} */
+}
 .budget-dashboard #all ul.list li.expense{
     color: #f0624d;
 }
@@ -337,13 +341,14 @@ input[type=number] {
 .budget-dashboard #expense ul.list li{
     position: relative;
     font-size: 1em;
-    width: 360px
+    width: 360px;
 }
 
 .budget-dashboard #expense ul.list li *{
     display: inline-block;
     height: 30px;
     vertical-align: middle;
+    width: 360px;
 }
 
 .budget-dashboard #expense ul.list li .entry{
@@ -441,6 +446,7 @@ input[type=number] {
 .budget-dashboard #income ul.list li{
     position: relative;
     font-size: 1em;
+    width: 360px;
 }
 
 .budget-dashboard #income ul.list li *{
@@ -483,9 +489,12 @@ input:focus, textarea:focus, select:focus{
     outline: none;
 }
 
+
+ /* //////// MEDIA QUERIES //////////  */
+
 @media screen and (max-width: 500px){
     .budget-dashboard #expense ul.list li{
-        width: 320px; }
+        width: 100%; }
     .budget-dashboard #expense .input {
         width: 100%;
         display: flex;
@@ -495,12 +504,29 @@ input:focus, textarea:focus, select:focus{
     }
 
     .budget-dashboard #income ul.list li{
-        width: 320px; }
+        width: 100%; }
     .budget-dashboard #income .input {
         width: 100%;
         display: flex;
         align-items: center; }
     .budget-dashboard #income .input input#income-amount-input {
         width: 100%;
+    }
+
+    .chartContainer {
+        width: 240px; }
+}
+@media screen and (min-width: 768px){
+
+    .budget-container .app-title{
+        margin-top: 30px;
+        margin-left: 20px;
+    }
+    .budget-container .app-title a {
+        font-size: 40px;
+    }
+
+    .budget-container .bank-img {
+        height: 40px;
     }
 }
