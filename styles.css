@@ -250,6 +250,8 @@ input[type=number] {
 .addbtn {
     display: inline-block;
     vertical-align: middle;
+    padding-left: 12px;
+    padding-right: 16px;
     -webkit-transform: perspective(1px) translateZ(0);
     transform: perspective(1px) translateZ(0);
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
@@ -335,6 +337,7 @@ input[type=number] {
 .budget-dashboard #expense ul.list li{
     position: relative;
     font-size: 1em;
+    width: 360px
 }
 
 .budget-dashboard #expense ul.list li *{
@@ -478,4 +481,26 @@ input[type=number] {
 }
 input:focus, textarea:focus, select:focus{
     outline: none;
+}
+
+@media screen and (max-width: 500px){
+    .budget-dashboard #expense ul.list li{
+        width: 320px; }
+    .budget-dashboard #expense .input {
+        width: 100%;
+        display: flex;
+        align-items: center; }
+    .budget-dashboard #expense .input input#expense-amount-input {
+        width: 100%;
+    }
+
+    .budget-dashboard #income ul.list li{
+        width: 320px; }
+    .budget-dashboard #income .input {
+        width: 100%;
+        display: flex;
+        align-items: center; }
+    .budget-dashboard #income .input input#income-amount-input {
+        width: 100%;
+    }
 }
