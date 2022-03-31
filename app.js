@@ -25,7 +25,6 @@ const addExpense = document.querySelector(".add-expense")
 const expenseTitle = document.getElementById("expense-title-input")
 const expenseAmount = document.getElementById("expense-amount-input")
 const expenseCategory = document.getElementById("expense-category")
-console.log(expenseCategory)
 
 // CHART FUNCTIONS
 Chart.defaults.font.family = 'Montserrat'
@@ -33,7 +32,7 @@ const ctx = document.getElementById('myChart');
 const pieChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-        labels: ['Remaining Income', 'Rent/Mortgage', 'Car payment', 'Utilities', 'Food/Groceries', 'Miscellaneous'],
+        labels: ['Rent/Mortgage', 'Car payment', 'Utilities', 'Food/Groceries', 'Miscellaneous', 'Remaining Income'],
         datasets: [{
             label: 'Expenses',
             data: [],
@@ -160,7 +159,7 @@ function deleteOrEdit(event){
 }
 
 function deleteEntry (entry){
-    ENTRY_LIST.splice(entry.id , 1) 
+    ENTRY_LIST.splice(entry.id, 1) 
     updateUI()
 }
 
@@ -184,13 +183,25 @@ function updateUI(){
     income = calculateTotal("income", ENTRY_LIST)
     outcome = calculateTotal("expense" , ENTRY_LIST)
     balance = Math.abs(calculateBalance(income, outcome))
-    category = chartCategories("category", ENTRY_LIST)
+    rentCategory = sortRentArray("Rent/Mortgage", ENTRY_LIST)
+    carCategory = sortCarArray("Car payment", ENTRY_LIST)
+    utilitiesCategory = sortUtilitiesArray("Utilities", ENTRY_LIST)
+    foodCategory = sortFoodArray("Food/Groceries", ENTRY_LIST)
+    miscCategory = sortMiscArray("Miscellaneous", ENTRY_LIST)
+    remainingIncome = 0
 
-    let sign = (income <= 0) ? "-$" : "$"
+    if (calculateBalance(income, outcome) > 0) {
+        remainingIncome = balance
+    } else {
+        remainingIncome = 0
+    }
+    
+
+    let sign = (income >= outcome) ? "$" : "-$"
 
     balanceEl.innerHTML = `<small>${sign}</small>${balance}`
-    incomeTotalEl.innerHTML = `<small>${sign}</small>${income}`
-    outcomeTotalEl.innerHTML = `<small>${sign}</small>${outcome}`
+    incomeTotalEl.innerHTML = `<small>$</small>${income}`
+    outcomeTotalEl.innerHTML = `<small>$</small>${outcome}`
 
     clearElement([incomeList, expenseList, allList]);
 
@@ -198,12 +209,12 @@ function updateUI(){
         if(entry.type == "income"){
             showEntry(incomeList, entry.type, entry.title, entry.amount, index)
         } else if(entry.type == "expense"){
-            showEntry(expenseList, entry.type, entry.title, entry.amount, entry.category, index) //need to add category here?
+            showEntry(expenseList, entry.type, entry.title, entry.amount, entry.category, index)
         } 
         showEntry(allList, entry.type, entry.title, entry.amount, index)
     });
-    // console.log(ctx, pieChart.data.datasets[0])
-    pieChart.data.datasets[0].data = [balance, category]
+    
+    pieChart.data.datasets[0].data = [rentCategory, carCategory, utilitiesCategory, foodCategory, miscCategory, remainingIncome]
     pieChart.update(); 
     localStorage.setItem("entry_list", JSON.stringify(ENTRY_LIST))
 }
@@ -241,15 +252,83 @@ function calculateTotal (type, list){
     return sum;
 }
 
-function chartCategories (category, list){
+
+function sortRentArray(category, list){
+    let rentArray = ENTRY_LIST.filter(function(e) {
+        return e.category == "Rent/Mortgage"
+        
+    })
     let sum = 0;
-    list.forEach(entry => {
+    rentArray.forEach(entry => {
         if(entry.category == category) {
             sum += entry.amount;
         }
     });
     return sum;
+    
 }
+function sortCarArray(category, list){
+    let carArray = ENTRY_LIST.filter(function(e) {
+        return e.category == "Car payment"
+        
+    })
+    let sum = 0;
+    carArray.forEach(entry => {
+        if(entry.category == category) {
+            sum += entry.amount;
+        }
+    });
+    return sum;
+    
+}
+
+function sortUtilitiesArray(category, list){
+    let utilitiesArray = ENTRY_LIST.filter(function(e) {
+        return e.category == "Utilities"
+        
+    })
+    let sum = 0;
+    utilitiesArray.forEach(entry => {
+        if(entry.category == category) {
+            sum += entry.amount;
+        }
+    });
+    return sum;
+    
+}
+
+function sortFoodArray(category, list){
+    let foodArray = ENTRY_LIST.filter(function(e) {
+        return e.category == "Food/Groceries"
+        
+    })
+    let sum = 0;
+    foodArray.forEach(entry => {
+        if(entry.category == category) {
+            sum += entry.amount;
+        }
+    });
+    return sum;
+    
+}
+
+function sortMiscArray(category, list){
+    let miscArray = ENTRY_LIST.filter(function(e) {
+        return e.category == "Miscellaneous"
+        
+    })
+    let sum = 0;
+    miscArray.forEach(entry => {
+        if(entry.category == category) {
+            sum += entry.amount;
+        }
+    });
+    return sum;
+    
+}
+
+
+
 
 function calculateBalance (income, outcome){
     return income - outcome;
