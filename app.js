@@ -24,6 +24,8 @@ const incomeAmount = document.getElementById("income-amount-input")
 const addExpense = document.querySelector(".add-expense")
 const expenseTitle = document.getElementById("expense-title-input")
 const expenseAmount = document.getElementById("expense-amount-input")
+const expenseCategory = document.getElementById("expense-category")
+console.log(expenseCategory)
 
 // CHART FUNCTIONS
 Chart.defaults.font.family = 'Montserrat'
@@ -31,7 +33,7 @@ const ctx = document.getElementById('myChart');
 const pieChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-        labels: ['Income', 'Expenses'],
+        labels: ['Remaining Income', 'Rent/Mortgage', 'Car payment', 'Utilities', 'Food/Groceries', 'Miscellaneous'],
         datasets: [{
             label: 'Expenses',
             data: [],
@@ -131,13 +133,14 @@ addExpense.addEventListener("click", function(){
     if(!expenseTitle.value || !expenseAmount.value) return;
     let expense = {
         type: "expense",
+        category: expenseCategory.value,
         title: expenseTitle.value,
         amount: parseFloat(expenseAmount.value),
     }
     ENTRY_LIST.push(expense);
 
     updateUI()
-    clearInput([expenseTitle, expenseAmount])
+    clearInput([expenseTitle, expenseAmount, expenseCategory])
 })
 
 incomeList.addEventListener("click", deleteOrEdit)
@@ -169,7 +172,8 @@ function editEntry (entry) {
         incomeTitle.value = ENTRY.title; 
     } else if (ENTRY.type == "expense"){
         expenseAmount.value = ENTRY.amount;
-        expenseTitle.value = ENTRY.title;  
+        expenseTitle.value = ENTRY.title; 
+        expenseCategory.value = ENTRY.category; 
     }
     deleteEntry(entry)
 }
@@ -180,8 +184,9 @@ function updateUI(){
     income = calculateTotal("income", ENTRY_LIST)
     outcome = calculateTotal("expense" , ENTRY_LIST)
     balance = Math.abs(calculateBalance(income, outcome))
+    category = chartCategories("category", ENTRY_LIST)
 
-    let sign = (income >= outcome) ? "$" : "-$"
+    let sign = (income <= 0) ? "-$" : "$"
 
     balanceEl.innerHTML = `<small>${sign}</small>${balance}`
     incomeTotalEl.innerHTML = `<small>${sign}</small>${income}`
@@ -193,21 +198,22 @@ function updateUI(){
         if(entry.type == "income"){
             showEntry(incomeList, entry.type, entry.title, entry.amount, index)
         } else if(entry.type == "expense"){
-            showEntry(expenseList, entry.type, entry.title, entry.amount, index)
+            showEntry(expenseList, entry.type, entry.title, entry.amount, entry.category, index) //need to add category here?
         } 
         showEntry(allList, entry.type, entry.title, entry.amount, index)
     });
-    console.log(ctx, pieChart.data.datasets[0])
-    pieChart.data.datasets[0].data = [balance, outcome]
+    // console.log(ctx, pieChart.data.datasets[0])
+    pieChart.data.datasets[0].data = [balance, category]
     pieChart.update(); 
     localStorage.setItem("entry_list", JSON.stringify(ENTRY_LIST))
 }
 
 // INDIVIDUAL ENTRIES
 
-function showEntry(list, type, title, amount, id){
+function showEntry(list, type, title, amount, category, id){
     const entry = `<li id= "${id}" class = "${type}">
                         <div class = "entry">${title}: $${amount}</div>
+                        <div class = "category">${category}</div>
                         <div id="edit"></div>
                         <div id="delete"></div>
                     </li>`;
@@ -235,6 +241,15 @@ function calculateTotal (type, list){
     return sum;
 }
 
+function chartCategories (category, list){
+    let sum = 0;
+    list.forEach(entry => {
+        if(entry.category == category) {
+            sum += entry.amount;
+        }
+    });
+    return sum;
+}
 
 function calculateBalance (income, outcome){
     return income - outcome;

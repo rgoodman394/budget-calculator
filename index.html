@@ -75,6 +75,18 @@
                 <div class="input">
                     <input type="text" id="expense-title-input" name="title" placeholder="Title">
                     <input type="number" id="expense-amount-input" name="amount" placeholder="$0">
+                    <!-- <form> -->
+                        <label for="expense-category">Choose a category</label>
+                        <select id="expense-category" name="category" required>
+                          <option value="" disabled selected hidden>Please choose...</option>
+                          <option value="Rent/Mortgage">Rent/Mortgage</option>
+                          <option value="Car payment">Car payment</option>
+                          <option value="Utilities">Utilities</option>
+                          <option value="Food/Groceries">Food/Groceries</option>
+                          <option value="Miscellaneous">Miscellaneous</option>
+                        </select>
+
+                      <!-- </form> -->
                     <div class="add-expense"><img class="addbtn" src="images/add.png" alt=""></div>
                 </div>
             </div>

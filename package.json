@@ -1,5 +1,5 @@
 {
-  "name": "low-web-orders",
+  "name": "budget-calculator",
   "version": "1.0.0",
   "description": "Code Louisville Spring 22 Project",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rgoodman394/low-web-orders.git"
+    "url": "git+https://github.com/rgoodman394/budget-calculator.git"
   },
   "author": "Bekah Goodman",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rgoodman394/low-web-orders/issues"
+    "url": "https://github.com/rgoodman394/budget-calculator/issues"
   },
-  "homepage": "https://github.com/rgoodman394/low-web-orders#readme",
+  "homepage": "https://github.com/rgoodman394/budget-calculator#readme",
   "dependencies": {
     "chart.js": "^3.7.1",
     "express": "^4.17.3",

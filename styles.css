@@ -239,6 +239,9 @@ input[type=number] {
 .budget-dashboard #all ul.list li #edit{
     visibility: hidden;
 }
+.budget-dashboard #all ul.list li .category{
+    visibility: hidden;
+}
 
 .budget-dashboard #all ul.list li #delete{
     position: absolute;
@@ -341,7 +344,7 @@ input[type=number] {
 .budget-dashboard #expense ul.list li{
     position: relative;
     font-size: 1em;
-    width: 360px;
+    /* width: 360px; */
 }
 
 .budget-dashboard #expense ul.list li *{
@@ -464,6 +467,10 @@ input[type=number] {
     font-family: 'Montserrat', sans-serif;
 }
 
+.budget-dashboard #income ul.list li .category{
+    visibility: hidden;
+}
+
 .budget-dashboard #income ul.list li #edit{
     position: absolute;
     width:20px;
@@ -528,5 +535,11 @@ input:focus, textarea:focus, select:focus{
 
     .budget-container .bank-img {
         height: 40px;
+    }
+    .budget-header .account .income .income-total {
+        font-size: 26px;
+    }
+    .budget-header .account .outcome .outcome-total {
+        font-size: 26px;
     }
 }
