@@ -305,11 +305,11 @@ input[type=number] {
 
 .budget-dashboard #expense .input input#expense-title-input{
     height: 40px;
-    width : 150px;
+    width : 10vw;
     padding-left: 10px;
-    font-size: 16px;
+    font-size: 12px;
     font-family: 'Montserrat', sans-serif; 
-    margin: 5px;
+    /* margin: 5px; */
     margin-left: 10px;
     border-radius: 10px 0 0 10px;
     border: none;
@@ -317,9 +317,9 @@ input[type=number] {
 
 .budget-dashboard #expense .input input#expense-amount-input{
     height: 40px;
-    width : 110px;
+    width : 5vw;
     padding-left: 10px;
-    font-size: 16px;
+    font-size: 12px;
     font-family: 'Montserrat', sans-serif; 
     margin: 5px;
     margin-left: -10px;
@@ -362,7 +362,7 @@ input[type=number] {
 
 .budget-dashboard #expense ul.list li{
     position: relative;
-    font-size: 1em;
+    font-size: 12px;
     display: flex;
     /* width: 360px; */
 }
@@ -521,6 +521,11 @@ input:focus, textarea:focus, select:focus{
  /* //////// MEDIA QUERIES //////////  */
 
 @media screen and (max-width: 500px){
+
+    .budget-dashboard #expense .input input#expense-title-input {
+        width: 40%
+    }
+
     .budget-dashboard #expense ul.list li{
         width: 100%; }
     .budget-dashboard #expense .input {
@@ -528,7 +533,7 @@ input:focus, textarea:focus, select:focus{
         display: flex;
         align-items: center; }
     .budget-dashboard #expense .input input#expense-amount-input {
-        width: 100%;
+        width: 30px;
     }
 
     .budget-dashboard #income ul.list li{
@@ -593,20 +598,35 @@ input:focus, textarea:focus, select:focus{
     .budget-dashboard #income .input {
         top: 450px;
     }
+/* 
+    .budget-dashboard #expense .input input#expense-title-input {
+        width: 15%;
+    }
+
+    .budget-dashboard #expense .input input#expense-amount-input {
+        width: 10%;
+    }*/
 
 }
+
+@media screen and (min-width: 768px) and  (max-width: 1024px){
+    .budget-dashboard #expense .input .add-expense img {
+        width: 25px;
+        height: 25px;
+}
+
 
 @media screen and (min-width: 1024px){
 
     .budget-dashboard #expense ul.list li {
-        width: 500px; 
+        width: 30vw; 
     }
 
     .budget-dashboard #income ul.list li {
-        width: 500px;  
+        width: 30vw;  
     }
 
     .budget-dashboard #all ul.list li {
-        width: 500px;  
+        width: 30vw;  
     }
 }
