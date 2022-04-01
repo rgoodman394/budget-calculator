@@ -10,7 +10,7 @@ html, body {
   }
 
 body{
-    background-color: #00376a;
+    background-color: #182848;
     font-family: 'Montserrat', sans-serif; /*regular*/
     
 }
@@ -116,6 +116,7 @@ input[type=number] {
 }
 .budget-header .account .outcome .outcome-total{
     color: #f0624d;
+    
     font-family: 'Rubik', sans-serif;
 }
 
@@ -258,7 +259,7 @@ input[type=number] {
 .addbtn {
     display: inline-block;
     vertical-align: middle;
-    padding-left: 12px;
+    /* padding-left: 12px; */
     padding-right: 16px;
     -webkit-transform: perspective(1px) translateZ(0);
     transform: perspective(1px) translateZ(0);
@@ -306,7 +307,7 @@ input[type=number] {
     height: 40px;
     width : 150px;
     padding-left: 10px;
-    font-size: 1.2em;
+    font-size: 16px;
     font-family: 'Montserrat', sans-serif; 
     margin: 5px;
     margin-left: 10px;
@@ -318,7 +319,7 @@ input[type=number] {
     height: 40px;
     width : 110px;
     padding-left: 10px;
-    font-size: 1.2em;
+    font-size: 16px;
     font-family: 'Montserrat', sans-serif; 
     margin: 5px;
     margin-left: -10px;
@@ -339,7 +340,8 @@ input[type=number] {
     margin: 5px;
     border-radius: 0 10px 10px 0;
     border: none;
-    height: 16px;
+    height: 30px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .budget-dashboard #expense .input .add-expense img{
@@ -428,7 +430,7 @@ input[type=number] {
     height: 40px;
     width : 150px;
     padding-left: 10px;
-    font-size: 1.2em;
+    font-size: 16px;
     font-family: 'Montserrat', sans-serif; 
     margin: 5px;
     margin-left: 10px;
@@ -440,7 +442,7 @@ input[type=number] {
     height: 40px;
     width : 110px;
     padding-left: 10px;
-    font-size: 1.2em;
+    font-size: 16px;
     font-family: 'Montserrat', sans-serif; 
     margin: 5px;
     margin-left: -10px;
@@ -584,16 +586,27 @@ input:focus, textarea:focus, select:focus{
         font-size: 26px;
     }
 
+    .budget-dashboard #expense .input {
+        top: 450px;
+    }
+
+    .budget-dashboard #income .input {
+        top: 450px;
+    }
+
+}
+
+@media screen and (min-width: 1024px){
+
     .budget-dashboard #expense ul.list li {
-        display: flex; 
+        width: 500px; 
     }
 
     .budget-dashboard #income ul.list li {
-        display: flex; 
+        width: 500px;  
     }
 
     .budget-dashboard #all ul.list li {
-        display: flex; 
+        width: 500px;  
     }
-
 }
