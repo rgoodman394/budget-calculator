@@ -305,7 +305,7 @@ input[type=number] {
 
 .budget-dashboard #expense .input input#expense-title-input{
     height: 40px;
-    width : 10vw;
+    /* width : 10vw; */
     padding-left: 10px;
     font-size: 12px;
     font-family: 'Montserrat', sans-serif; 
@@ -523,7 +523,7 @@ input:focus, textarea:focus, select:focus{
 @media screen and (max-width: 500px){
 
     .budget-dashboard #expense .input input#expense-title-input {
-        width: 40%
+        width: 40%;
     }
 
     .budget-dashboard #expense ul.list li{
@@ -593,19 +593,12 @@ input:focus, textarea:focus, select:focus{
 
     .budget-dashboard #expense .input {
         top: 450px;
+        width: 100%;
     }
 
     .budget-dashboard #income .input {
         top: 450px;
     }
-/* 
-    .budget-dashboard #expense .input input#expense-title-input {
-        width: 15%;
-    }
-
-    .budget-dashboard #expense .input input#expense-amount-input {
-        width: 10%;
-    }*/
 
 }
 
@@ -613,6 +606,19 @@ input:focus, textarea:focus, select:focus{
     .budget-dashboard #expense .input .add-expense img {
         width: 25px;
         height: 25px;
+    }
+
+    .budget-dashboard #income .input .add-income img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .budget-dashboard #expense .input input#expense-amount-input {
+        margin-right: 0;
+    }
+
+    .budget-dashboard #expense .input input#expense-title-input {
+        width: 7vw;
     }
 }
 
@@ -629,5 +635,18 @@ input:focus, textarea:focus, select:focus{
 
     .budget-dashboard #all ul.list li {
         width: 30vw;  
+    }
+
+    .budget-dashboard #expense .input input#expense-title-input {
+        font-size: 16px;
+        width: 10vw;
+    }
+    .budget-dashboard #expense .input input#expense-amount-input { 
+        font-size: 16px;
+    }
+
+    .budget-dashboard #expense ul.list li {
+        font-size: 16px;
+        width: 30vw;
     }
 }
