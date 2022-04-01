@@ -215,6 +215,7 @@ input[type=number] {
 }
 
 .budget-dashboard #all ul.list li{
+    display: flex;
     position: relative;
     font-size: 1em;
     width: 100%;
@@ -274,7 +275,7 @@ input[type=number] {
 
 
 .budget-dashboard #all ul.list li{
-    width: 360px;;
+    width: 100%;
 
 }
 .budget-dashboard #all ul.list li.expense{
@@ -325,6 +326,22 @@ input[type=number] {
     border: none;
 }
 
+.choose-a-category {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2em;
+    margin: 5px;
+    margin-left: -10px;
+    border-radius: 0 10px 10px 0;
+    border: none;
+}
+
+.drop-down {
+    margin: 5px;
+    border-radius: 0 10px 10px 0;
+    border: none;
+    height: 16px;
+}
+
 .budget-dashboard #expense .input .add-expense img{
     width: 40px;
     height: 40px;
@@ -344,6 +361,7 @@ input[type=number] {
 .budget-dashboard #expense ul.list li{
     position: relative;
     font-size: 1em;
+    display: flex;
     /* width: 360px; */
 }
 
@@ -448,8 +466,9 @@ input[type=number] {
 
 .budget-dashboard #income ul.list li{
     position: relative;
+    display: flex;
     font-size: 1em;
-    width: 360px;
+    width: 100%;
 }
 
 .budget-dashboard #income ul.list li *{
@@ -525,6 +544,23 @@ input:focus, textarea:focus, select:focus{
 }
 @media screen and (min-width: 768px){
 
+    .budget-container {
+        width: 60vw;
+        height: 115%;
+
+    }
+
+    .budget-dashboard {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 40vw;
+        position: absolute;
+        left: 60vw;
+        top: -36px;
+        border-radius: 0;
+    }
+
     .budget-container .app-title{
         margin-top: 30px;
         margin-left: 20px;
@@ -536,10 +572,28 @@ input:focus, textarea:focus, select:focus{
     .budget-container .bank-img {
         height: 40px;
     }
+
+    .toggle {
+        display: flex;
+    }
+
     .budget-header .account .income .income-total {
         font-size: 26px;
     }
     .budget-header .account .outcome .outcome-total {
         font-size: 26px;
     }
+
+    .budget-dashboard #expense ul.list li {
+        display: flex; 
+    }
+
+    .budget-dashboard #income ul.list li {
+        display: flex; 
+    }
+
+    .budget-dashboard #all ul.list li {
+        display: flex; 
+    }
+
 }

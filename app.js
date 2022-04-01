@@ -207,7 +207,7 @@ function updateUI(){
 
     ENTRY_LIST.forEach((entry, index) => {
         if(entry.type == "income"){
-            showEntry(incomeList, entry.type, entry.title, entry.amount, index)
+            showEntry(incomeList, entry.type, entry.title, entry.amount, entry.category, index)
         } else if(entry.type == "expense"){
             showEntry(expenseList, entry.type, entry.title, entry.amount, entry.category, index)
         } 
